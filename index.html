@@ -1,90 +1,259 @@
-<main class="main">
-  <h1>钱雁汕</h1>
-  <p class="tagline">
-    Undergraduate in <strong>Data Science & Big Data Technology</strong> at
-    <strong>Jiangsu University of Technology</strong> (2021.09–2025.06).
-    Ranked <strong>#1/80</strong>, GPA <strong>4.14</strong>, average score <strong>91.14</strong>.
-    Recipient of <strong>National Scholarship</strong>.
-  </p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Yanshan Qian (钱雁汕)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <p>
-    I work on <strong>high-dimensional clustering</strong> and its applications in
-    <strong>financial data mining</strong>, including market analysis, risk assessment,
-    forecasting, and visualization. I enjoy building end-to-end data solutions
-    from algorithm design to system implementation.
-  </p>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, "Noto Sans", "PingFang SC",
+                   "Microsoft YaHei", sans-serif;
+      background: #f5f5f7;
+      color: #222;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+      display: flex;
+      gap: 32px;
+    }
+    .sidebar {
+      width: 260px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      height: fit-content;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 16px;
+    }
+    .name {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .title {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .links a {
+      display: block;
+      font-size: 14px;
+      color: #0366d6;
+      text-decoration: none;
+      margin: 6px 0;
+      word-break: break-all;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .main {
+      flex: 1;
+    }
+    h1 {
+      font-size: 26px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 20px;
+      border-left: 4px solid #0366d6;
+      padding-left: 8px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    ul {
+      padding-left: 20px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .tagline {
+      color: #444;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    .highlight {
+      color: #c0392b;
+      font-weight: 600;
+    }
 
-  <h2>Education</h2>
-  <ul>
-    <li>
-      <strong>B.Eng. in Data Science & Big Data Technology</strong>,
-      Jiangsu University of Technology, Jiangsu, China (2021.09–2025.06)
-      <ul>
-        <li>Rank: 1/80 | GPA: 4.14 | Avg: 91.14 | Scholarships: 1st-class ×7 + National Scholarship ×1</li>
-        <li>Key courses: Data Structures, Machine Learning, Data Mining, Data Analysis, Data Visualization</li>
-      </ul>
-    </li>
-  </ul>
+    /* Publications */
+    .pub-item {
+      margin-bottom: 14px;
+    }
+    .pub-title {
+      font-weight: 600;
+    }
+    .pub-authors {
+      margin: 4px 0;
+      color: #333;
+    }
+    .pub-venue {
+      font-style: italic;
+      color: #555;
+    }
+    .pub-venue a {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      border: 1px solid #d0d7de;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #0366d6;
+      text-decoration: none;
+    }
+    .pub-venue a:hover {
+      background: #f6f8fa;
+    }
 
-  <h2>Research Interests</h2>
-  <ul>
-    <li>High-dimensional clustering and representation</li>
-    <li>Financial data mining, forecasting, and decision support</li>
-    <li>Statistical modeling & mathematical modeling</li>
-    <li>Data visualization and analytics systems</li>
-  </ul>
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
 
-  <h2>Publications</h2>
-  <div class="pub-item">
-    <div class="pub-title">An Innovative High-Dimensional Clustering Algorithm and Its Application to Urban Stratification and Planning</div>
-    <div><strong>Qian Yanshan</strong>, Co-authors</div>
-    <div class="pub-venue">IEEE Conference Paper, 2nd author.</div>
-  </div>
-  <div class="pub-item">
-    <div class="pub-title">A Novel High-Dimensional Clustering Algorithm and Its Application in Financial Data Forecasting</div>
-    <div><strong>Qian Yanshan</strong>, Co-authors</div>
-    <div class="pub-venue">EI Conference Paper, 1st author.</div>
-  </div>
+<body>
+<div class="container">
 
-  <h2>Intellectual Property & Software</h2>
-  <ul>
-    <li><strong>Invention Patent</strong>: A Pareto-optimal high-dimensional clustering method for urban stratification and planning</li>
-    <li><strong>Software Copyright</strong>: Multi-dimensional Market Analysis System (Reg. No. 2025SR1130608)</li>
-  </ul>
+  <!-- 左侧个人卡片 -->
+  <aside class="sidebar">
+    <img src="./avatar.jpg" alt="Yanshan Qian" class="avatar">
 
-  <h2>Projects</h2>
-  <ul>
-    <li>
-      <strong>An innovative clustering algorithm and its application in finance</strong>
-      <span style="color:#666;">(Project Lead, 2023.05–2024.04)</span><br>
-      Provincial undergraduate innovation project. Designed a clustering-based data mining approach for
-      market analysis, customer analysis, and risk assessment in financial scenarios.
-    </li>
-    <li>
-      <strong>Intelligent sleep ventilator system R&D</strong>
-      <span style="color:#666;">(Team Member, 2024.01–2024.12)</span><br>
-      Industry-academic project with medical device company. Participated in R&D of nebulization unit,
-      ventilator container and cleaning method for medical devices.
-    </li>
-  </ul>
+    <div class="name">Yanshan Qian</div>
+    <div class="title">
+      Graduate Student<br>
+      Beijing Information Science and Technology University
+    </div>
 
-  <h2>Honors & Leadership</h2>
-  <ul>
-    <li><strong>National Scholarship</strong> (2023)</li>
-    <li>National awards: Statistical Modeling Contest (National 3rd Prize, Captain), “Huashu Cup” (National 3rd Prize, Captain), May Day Modeling (1st Prize, Captain), etc.</li>
-    <li>Provincial awards: Jiangsu “Three-Good Student” (2024), Higher Education Press Cup (Jiangsu 3rd Prize), etc.</li>
-    <li>Leadership: Class monitor (2021.09–Present), Class mentor (2021.10–2023.12), Teaching assistant (2022.09–2024.09)</li>
-  </ul>
+    <div class="links">
+      <a href="mailto:your_email@example.com">📧 your_email@example.com</a>
+      <a href="https://github.com/your_github" target="_blank">🐙 GitHub</a>
+      <a href="https://scholar.google.com/" target="_blank">🎓 Google Scholar</a>
+      <a href="./cv.pdf" target="_blank">📄 Download CV</a>
+    </div>
+  </aside>
 
-  <h2>Skills & Certifications</h2>
-  <ul>
-    <li>Statistics, data analysis, big data tech, scientific computing, forecasting</li>
-    <li>Certification: Computer Vision Architect (Intermediate)</li>
-    <li>English: CET-6</li>
-  </ul>
+  <!-- 右侧正文 -->
+  <main class="main">
+    <h1>Yanshan Qian (钱雁汕)</h1>
 
-  <h2>Contact</h2>
-  <p>
-    Email: <span class="highlight">18114223065@163.com</span>
-  </p>
-</main>
+    <p class="tagline">
+      I am a <strong>graduate student</strong> at
+      <strong>Beijing Information Science and Technology University (BISTU)</strong>.
+      My research focuses on <strong>high-dimensional clustering</strong>,
+      <strong>fuzzy multi-attribute group decision making</strong>,
+      and <strong>intelligent optimization</strong>, with applications in
+      <strong>urban planning</strong> and <strong>financial decision making</strong>.
+    </p>
+
+    <p>
+      My current research interests include high-dimensional data modeling,
+      aggregation operators based on triangular intuitionistic fuzzy numbers,
+      and optimization-driven decision frameworks such as PGSA and NSGA-II.
+      I aim to improve robustness, discrimination ability, and interpretability
+      in complex decision-making scenarios.
+    </p>
+
+    <h2>Research Interests</h2>
+    <ul>
+      <li>High-dimensional clustering and representation learning</li>
+      <li>Multi-attribute group decision making (MAGDM)</li>
+      <li>Fuzzy sets and intuitionistic fuzzy modeling</li>
+      <li>Intelligent optimization algorithms (PGSA, NSGA-II)</li>
+      <li>Financial data analysis and forecasting</li>
+    </ul>
+
+    <h2>Publications</h2>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        Research on Complex Financial Decision Making Driven by Geometric Aggregation and Intelligent Optimization of High-Dimensional Expert Information
+      </div>
+      <div class="pub-authors">
+        <strong>Y Qian</strong>, J Qiu, C Li, Y Liu, M Niu, S Chen
+      </div>
+      <div class="pub-venue">
+        Scientific Reports, 15(1):35709, 2025
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        An Optimization-Based Aggregation Approach with Triangular Intuitionistic Fuzzy Numbers in High-Dimensional Multi-Attribute Decision-Making
+      </div>
+      <div class="pub-authors">
+        <strong>Y Qian</strong>, J Qiu, J Tang, Q Liu, C Li, S Chen
+      </div>
+      <div class="pub-venue">
+        Information, 16(11):1010, 2025
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        Numerical Aggregation and Evaluation of High-Dimensional Multi-Expert Decisions Based on Triangular Intuitionistic Fuzzy Modeling
+      </div>
+      <div class="pub-authors">
+        <strong>Y Qian</strong>, J Qiu, J Tang, C Li, S Chen
+      </div>
+      <div class="pub-venue">
+        Mathematical and Computational Applications, 30(6):123, 2025
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        An Innovative High-Dimensional Clustering Algorithm and its Application to Urban Stratification and Planning
+      </div>
+      <div class="pub-authors">
+        Z Du, <strong>Y Qian</strong>, C Li, Y Hu, J Qiu
+      </div>
+      <div class="pub-venue">
+        7th International Conference on Advanced Algorithms and Control, 2024
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        A Novel High-Dimensional Clustering Algorithm and its Application in Financial Data Forecasting
+      </div>
+      <div class="pub-authors">
+        <strong>Y Qian</strong>, Z Du, C Li, J Qiu
+      </div>
+      <div class="pub-venue">
+        Third International Conference on Electronic Information Engineering, 2024
+      </div>
+    </div>
+
+    <h2>Contact</h2>
+    <p>
+      Email: <span class="highlight">your_email@example.com</span>
+    </p>
+
+  </main>
+</div>
+</body>
+</html>
