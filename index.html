@@ -1,259 +1,519 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Yanshan Qian (钱雁汕)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yanshan Qian's academic homepage — fuzzy decision making, high-dimensional clustering, intelligent optimization." />
 
   <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                   "Helvetica Neue", Arial, "Noto Sans", "PingFang SC",
-                   "Microsoft YaHei", sans-serif;
-      background: #f5f5f7;
-      color: #222;
-    }
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 24px 16px 48px;
-      display: flex;
-      gap: 32px;
-    }
-    .sidebar {
-      width: 260px;
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-      height: fit-content;
-    }
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 16px;
-    }
-    .name {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .title {
-      text-align: center;
-      font-size: 14px;
-      color: #666;
-      line-height: 1.4;
-      margin-bottom: 12px;
-    }
-    .links a {
-      display: block;
-      font-size: 14px;
-      color: #0366d6;
-      text-decoration: none;
-      margin: 6px 0;
-      word-break: break-all;
-    }
-    .links a:hover {
-      text-decoration: underline;
-    }
-    .main {
-      flex: 1;
-    }
-    h1 {
-      font-size: 26px;
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-    h2 {
-      font-size: 20px;
-      border-left: 4px solid #0366d6;
-      padding-left: 8px;
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-    p {
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    ul {
-      padding-left: 20px;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .tagline {
-      color: #444;
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
-    .highlight {
-      color: #c0392b;
-      font-weight: 600;
+    /* =========================
+       0) Base
+    ========================= */
+    :root{
+      --bg: #0b1020;
+      --bg2:#0a0f1f;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.58);
+      --brand1:#7c3aed; /* purple */
+      --brand2:#22c55e; /* green */
+      --brand3:#06b6d4; /* cyan */
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 24px;
     }
 
-    /* Publications */
-    .pub-item {
-      margin-bottom: 14px;
+    /* Auto light mode */
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --bg2:#eef1f8;
+        --card: rgba(255,255,255,.75);
+        --card2: rgba(255,255,255,.6);
+        --stroke: rgba(15,23,42,.12);
+        --text: rgba(15,23,42,.92);
+        --muted: rgba(15,23,42,.72);
+        --muted2: rgba(15,23,42,.56);
+        --shadow: 0 18px 50px rgba(15,23,42,.12);
+      }
     }
-    .pub-title {
-      font-weight: 600;
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(124,58,237,.35), transparent 60%),
+                  radial-gradient(900px 600px at 85% 20%, rgba(6,182,212,.30), transparent 60%),
+                  radial-gradient(900px 600px at 30% 90%, rgba(34,197,94,.22), transparent 60%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
     }
-    .pub-authors {
-      margin: 4px 0;
-      color: #333;
+    a{ color: inherit; }
+    .wrap{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 70px;
     }
-    .pub-venue {
-      font-style: italic;
-      color: #555;
+
+    /* =========================
+       1) Top hero
+    ========================= */
+    .hero{
+      position: relative;
+      border-radius: var(--radius2);
+      padding: 26px 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
     }
-    .pub-venue a {
-      display: inline-block;
-      margin-left: 8px;
-      padding: 2px 8px;
-      border: 1px solid #d0d7de;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(500px 200px at 20% 30%, rgba(124,58,237,.22), transparent 60%),
+                  radial-gradient(420px 220px at 80% 35%, rgba(6,182,212,.18), transparent 60%),
+                  radial-gradient(520px 240px at 40% 110%, rgba(34,197,94,.14), transparent 70%);
+      filter: blur(8px);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width: 280px;
+    }
+    .avatar{
+      width: 86px;
+      height: 86px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,.22);
+      box-shadow: 0 14px 36px rgba(0,0,0,.28);
+      background: rgba(255,255,255,.08);
+    }
+    .name{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+    .name h1{
+      margin:0;
+      font-size: 26px;
+      letter-spacing: .2px;
+      line-height: 1.15;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.5;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-decoration:none;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 26px rgba(0,0,0,.20);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.24);
+    }
+    .btn.primary{
+      border: 1px solid rgba(124,58,237,.55);
+      background: linear-gradient(135deg, rgba(124,58,237,.30), rgba(6,182,212,.18));
+    }
+
+    /* =========================
+       2) Main layout
+    ========================= */
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding: 16px 16px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .card .hd h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing:.3px;
+      color: var(--text);
+    }
+    .card .bd{
+      padding: 14px 16px 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.75;
+    }
+
+    .pills{ display:flex; flex-wrap:wrap; gap: 8px; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-size: 12px;
+      white-space:nowrap;
+    }
+    .pill b{ font-weight:700; }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .list li{ margin: 6px 0; }
+
+    .section-title{
+      margin:0;
+      font-size: 20px;
+      color: var(--text);
+    }
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height:1.85;
+    }
+
+    /* =========================
+       3) Publication cards
+    ========================= */
+    .pubs{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .pub{
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      padding: 14px 14px 12px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .pub:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.22);
+    }
+    .pub-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .pub-title{
+      margin:0;
+      font-size: 15px;
+      line-height:1.45;
+      color: var(--text);
+      font-weight: 700;
+      max-width: 860px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding: 6px 10px;
       border-radius: 999px;
       font-size: 12px;
-      color: #0366d6;
-      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      white-space:nowrap;
     }
-    .pub-venue a:hover {
-      background: #f6f8fa;
+    .tag.journal{
+      border-color: rgba(34,197,94,.45);
+      background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(34,197,94,.08));
+    }
+    .tag.conference{
+      border-color: rgba(6,182,212,.45);
+      background: linear-gradient(135deg, rgba(6,182,212,.22), rgba(6,182,212,.08));
+    }
+    .tag.top{
+      border-color: rgba(124,58,237,.55);
+      background: linear-gradient(135deg, rgba(124,58,237,.25), rgba(124,58,237,.08));
+    }
+    .pub-auth{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height:1.6;
+    }
+    .pub-venue{
+      margin: 6px 0 0;
+      color: var(--muted2);
+      font-size: 13px;
+      line-height:1.6;
+    }
+    .pub-links{
+      margin-top: 10px;
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-size: 12.5px;
+      color: var(--text);
+      transition: transform .18s ease, background .18s ease;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
     }
 
-    @media (max-width: 800px) {
-      .container {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 100%;
-      }
+    /* =========================
+       4) Footer note
+    ========================= */
+    .foot{
+      margin-top: 16px;
+      color: var(--muted2);
+      font-size: 12.5px;
+      line-height:1.7;
     }
   </style>
 </head>
 
 <body>
-<div class="container">
+  <div class="wrap">
 
-  <!-- 左侧个人卡片 -->
-  <aside class="sidebar">
-    <img src="./avatar.jpg" alt="Yanshan Qian" class="avatar">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="brand">
+          <!-- 换成你的头像文件名，比如 avatar.jpg -->
+          <img class="avatar" src="./avatar.jpg" alt="Yanshan Qian avatar" />
+          <div class="name">
+            <h1>Yanshan Qian <span style="font-weight:600; opacity:.85;">(钱雁汕)</span></h1>
+            <p class="sub">
+              Graduate Student · Beijing Information Science and Technology University (BISTU)<br/>
+              High-Dimensional Clustering · Fuzzy MAGDM · Intelligent Optimization
+            </p>
+          </div>
+        </div>
 
-    <div class="name">Yanshan Qian</div>
-    <div class="title">
-      Graduate Student<br>
-      Beijing Information Science and Technology University
-    </div>
+        <div class="hero-actions">
+          <!-- 改成你的真实链接 -->
+          <a class="btn primary" href="./cv.pdf" target="_blank" rel="noopener">📄 Download CV</a>
+          <a class="btn" href="mailto:your_email@example.com">✉️ Email</a>
+          <a class="btn" href="https://github.com/your_github" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener">🎓 Scholar</a>
+        </div>
+      </div>
+    </section>
 
-    <div class="links">
-      <a href="mailto:your_email@example.com">📧 your_email@example.com</a>
-      <a href="https://github.com/your_github" target="_blank">🐙 GitHub</a>
-      <a href="https://scholar.google.com/" target="_blank">🎓 Google Scholar</a>
-      <a href="./cv.pdf" target="_blank">📄 Download CV</a>
-    </div>
-  </aside>
+    <!-- MAIN GRID -->
+    <section class="grid">
 
-  <!-- 右侧正文 -->
-  <main class="main">
-    <h1>Yanshan Qian (钱雁汕)</h1>
+      <!-- LEFT: profile / quick facts -->
+      <aside class="card">
+        <div class="hd">
+          <h2>Quick Profile</h2>
+        </div>
+        <div class="bd">
+          <div class="pills" style="margin-bottom:12px;">
+            <span class="pill">🔬 <b>Focus</b> MAGDM</span>
+            <span class="pill">🧠 <b>Methods</b> PGSA / NSGA-II</span>
+            <span class="pill">📈 <b>Apps</b> Finance</span>
+            <span class="pill">🏙️ <b>Apps</b> Urban Planning</span>
+          </div>
 
-    <p class="tagline">
-      I am a <strong>graduate student</strong> at
-      <strong>Beijing Information Science and Technology University (BISTU)</strong>.
-      My research focuses on <strong>high-dimensional clustering</strong>,
-      <strong>fuzzy multi-attribute group decision making</strong>,
-      and <strong>intelligent optimization</strong>, with applications in
-      <strong>urban planning</strong> and <strong>financial decision making</strong>.
-    </p>
+          <p style="margin:0 0 10px;">
+            I design optimization-driven aggregation models under fuzzy information representations
+            (triangular intuitionistic fuzzy numbers, SVNS, etc.) and develop robust decision frameworks
+            for complex real-world scenarios.
+          </p>
 
-    <p>
-      My current research interests include high-dimensional data modeling,
-      aggregation operators based on triangular intuitionistic fuzzy numbers,
-      and optimization-driven decision frameworks such as PGSA and NSGA-II.
-      I aim to improve robustness, discrimination ability, and interpretability
-      in complex decision-making scenarios.
-    </p>
+          <div style="height:10px;"></div>
 
-    <h2>Research Interests</h2>
-    <ul>
-      <li>High-dimensional clustering and representation learning</li>
-      <li>Multi-attribute group decision making (MAGDM)</li>
-      <li>Fuzzy sets and intuitionistic fuzzy modeling</li>
-      <li>Intelligent optimization algorithms (PGSA, NSGA-II)</li>
-      <li>Financial data analysis and forecasting</li>
-    </ul>
+          <div class="pills">
+            <span class="pill">📍 Beijing, China</span>
+            <span class="pill">🗂️ Open to collaboration</span>
+          </div>
+        </div>
+      </aside>
 
-    <h2>Publications</h2>
+      <!-- RIGHT: main content -->
+      <main class="card">
+        <div class="hd">
+          <h2 class="section-title">About</h2>
+        </div>
+        <div class="bd">
+          <p class="lead">
+            My research interests include <b>high-dimensional clustering</b>, <b>fuzzy multi-attribute group decision making (MAGDM)</b>,
+            and <b>intelligent optimization</b> for complex financial decision making and urban analytics.
+            I focus on improving <b>robustness</b>, <b>discrimination ability</b>, and <b>ranking stability</b> in high-dimensional expert information fusion.
+          </p>
 
-    <div class="pub-item">
-      <div class="pub-title">
-        Research on Complex Financial Decision Making Driven by Geometric Aggregation and Intelligent Optimization of High-Dimensional Expert Information
-      </div>
-      <div class="pub-authors">
-        <strong>Y Qian</strong>, J Qiu, C Li, Y Liu, M Niu, S Chen
-      </div>
-      <div class="pub-venue">
-        Scientific Reports, 15(1):35709, 2025
-      </div>
-    </div>
+          <div style="height:14px;"></div>
 
-    <div class="pub-item">
-      <div class="pub-title">
-        An Optimization-Based Aggregation Approach with Triangular Intuitionistic Fuzzy Numbers in High-Dimensional Multi-Attribute Decision-Making
-      </div>
-      <div class="pub-authors">
-        <strong>Y Qian</strong>, J Qiu, J Tang, Q Liu, C Li, S Chen
-      </div>
-      <div class="pub-venue">
-        Information, 16(11):1010, 2025
-      </div>
-    </div>
+          <h2 class="section-title" style="font-size:18px;">Research Interests</h2>
+          <ul class="list">
+            <li>High-dimensional clustering and forecasting</li>
+            <li>Fuzzy sets: intuitionistic fuzzy numbers, neutrosophic sets, picture fuzzy sets</li>
+            <li>Optimization-based aggregation operators (PGSA, NSGA-II, PSO, etc.)</li>
+            <li>Financial decision support and stock analytics</li>
+          </ul>
 
-    <div class="pub-item">
-      <div class="pub-title">
-        Numerical Aggregation and Evaluation of High-Dimensional Multi-Expert Decisions Based on Triangular Intuitionistic Fuzzy Modeling
-      </div>
-      <div class="pub-authors">
-        <strong>Y Qian</strong>, J Qiu, J Tang, C Li, S Chen
-      </div>
-      <div class="pub-venue">
-        Mathematical and Computational Applications, 30(6):123, 2025
-      </div>
-    </div>
+          <div style="height:14px;"></div>
 
-    <div class="pub-item">
-      <div class="pub-title">
-        An Innovative High-Dimensional Clustering Algorithm and its Application to Urban Stratification and Planning
-      </div>
-      <div class="pub-authors">
-        Z Du, <strong>Y Qian</strong>, C Li, Y Hu, J Qiu
-      </div>
-      <div class="pub-venue">
-        7th International Conference on Advanced Algorithms and Control, 2024
-      </div>
-    </div>
+          <h2 class="section-title" style="font-size:18px;">Publications</h2>
 
-    <div class="pub-item">
-      <div class="pub-title">
-        A Novel High-Dimensional Clustering Algorithm and its Application in Financial Data Forecasting
-      </div>
-      <div class="pub-authors">
-        <strong>Y Qian</strong>, Z Du, C Li, J Qiu
-      </div>
-      <div class="pub-venue">
-        Third International Conference on Electronic Information Engineering, 2024
-      </div>
-    </div>
+          <div class="pubs">
 
-    <h2>Contact</h2>
-    <p>
-      Email: <span class="highlight">your_email@example.com</span>
-    </p>
+            <article class="pub">
+              <div class="pub-top">
+                <h3 class="pub-title">Research on complex financial decision making driven by geometric aggregation and intelligent optimization of high-dimensional expert information</h3>
+                <span class="tag top">Top Journal</span>
+              </div>
+              <p class="pub-auth"><b>Y Qian</b>, J Qiu, C Li, Y Liu, M Niu, S Chen</p>
+              <p class="pub-venue"><i>Scientific Reports</i> 15(1):35709, 2025</p>
+              <div class="pub-links">
+                <!-- 你有 DOI / PDF / Code 就把 # 改成真实链接 -->
+                <a class="chip" href="#" target="_blank" rel="noopener">🔗 DOI</a>
+                <a class="chip" href="#" target="_blank" rel="noopener">📄 PDF</a>
+                <a class="chip" href="#" target="_blank" rel="noopener">💻 Code</a>
+              </div>
+            </article>
 
-  </main>
-</div>
+            <article class="pub">
+              <div class="pub-top">
+                <h3 class="pub-title">An Optimization-Based Aggregation Approach with Triangular Intuitionistic Fuzzy Numbers in High-Dimensional Multi-Attribute Decision-Making</h3>
+                <span class="tag journal">Journal</span>
+              </div>
+              <p class="pub-auth"><b>Y Qian</b>, J Qiu, J Tang, Q Liu, C Li, S Chen</p>
+              <p class="pub-venue"><i>Information</i> 16(11):1010, 2025</p>
+              <div class="pub-links">
+                <a class="chip" href="#" target="_blank" rel="noopener">🔗 DOI</a>
+                <a class="chip" href="#" target="_blank" rel="noopener">📄 PDF</a>
+              </div>
+            </article>
+
+            <article class="pub">
+              <div class="pub-top">
+                <h3 class="pub-title">Numerical Aggregation and Evaluation of High-Dimensional Multi-Expert Decisions Based on Triangular Intuitionistic Fuzzy Modeling</h3>
+                <span class="tag journal">Journal</span>
+              </div>
+              <p class="pub-auth"><b>Y Qian</b>, J Qiu, J Tang, C Li, S Chen</p>
+              <p class="pub-venue"><i>Mathematical and Computational Applications</i> 30(6):123, 2025</p>
+              <div class="pub-links">
+                <a class="chip" href="#" target="_blank" rel="noopener">🔗 DOI</a>
+                <a class="chip" href="#" target="_blank" rel="noopener">📄 PDF</a>
+              </div>
+            </article>
+
+            <article class="pub">
+              <div class="pub-top">
+                <h3 class="pub-title">An Innovative High-Dimensional Clustering Algorithm and its Application to Urban Stratification and Planning</h3>
+                <span class="tag conference">Conference</span>
+              </div>
+              <p class="pub-auth">Z Du, <b>Y Qian</b>, C Li, Y Hu, J Qiu</p>
+              <p class="pub-venue">7th International Conference on Advanced Algorithms and Control, 2024</p>
+              <div class="pub-links">
+                <a class="chip" href="#" target="_blank" rel="noopener">📄 PDF</a>
+              </div>
+            </article>
+
+            <article class="pub">
+              <div class="pub-top">
+                <h3 class="pub-title">A novel high-dimensional clustering algorithm and its application in financial data forecasting</h3>
+                <span class="tag conference">Conference</span>
+              </div>
+              <p class="pub-auth"><b>Y Qian</b>, Z Du, C Li, J Qiu</p>
+              <p class="pub-venue">Third International Conference on Electronic Information Engineering, 2024</p>
+              <div class="pub-links">
+                <a class="chip" href="#" target="_blank" rel="noopener">📄 PDF</a>
+              </div>
+            </article>
+
+          </div>
+
+          <p class="foot">
+            Tip: put your PDFs in <code style="opacity:.9;">./papers/</code> and replace the <code>#</code> links above.
+            You can also remove any “DOI/PDF/Code” chips you don’t want to show yet.
+          </p>
+
+          <div style="height:10px;"></div>
+
+          <h2 class="section-title" style="font-size:18px;">Contact</h2>
+          <p class="lead" style="margin-top:6px;">
+            Email: <span style="font-weight:800; color: rgba(255,255,255,.95);">your_email@example.com</span>
+          </p>
+        </div>
+      </main>
+
+    </section>
+  </div>
 </body>
 </html>
